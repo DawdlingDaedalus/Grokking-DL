@@ -17,16 +17,16 @@ goal_prediction = walk_vs_stop[0]
 
 for iteration in range(40):
     error_for_all_lights = 0
-    for row_index in range(len(walk_vs_stop)): # Breakpoint
+    for row_index in range(len(walk_vs_stop)):         # Breakpoint
         input = streetlights[row_index]
         goal_prediction = walk_vs_stop[row_index]
 
-        prediction = input.dot(weights)
+        prediction = input.dot(weights)                # 
 
         error = (goal_prediction - prediction) ** 2
         error_for_all_lights += error
 
-        delta = goal_prediction - prediction # swapped
+        delta = goal_prediction - prediction           # swapped
         weights = weights - (alpha * (input * delta))
         print("Prediction:" + str(prediction))
     print("Error:" + str(error_for_all_lights) + "\n")
